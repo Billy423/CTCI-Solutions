@@ -1,56 +1,41 @@
-# Cracking the Coding Interview Solutions
+# CTCI Solutions
 
-This repository contains my personal solutions to problems from "Cracking the Coding Interview" by Gayle Laakmann McDowell, implemented in Java.
+Personal solutions to "Cracking the Coding Interview" problems in Java.
 
 ## Structure
 
 ```
-├── src/
-│   ├── arrays/
-│   ├── strings/
-│   ├── linkedlists/
-│   ├── stacks/
-│   ├── queues/
-│   ├── trees/
-│   ├── graphs/
-│   ├── dynamicprogramming/
-│   ├── sorting/
-│   └── searching/
-├── tests/
+├── solutions/
+│   ├── TestUtils.java                    # Testing utility
+│   └── 1-arrays_and_strings/
+│       ├── IsUnique.java                 # 1.1 - Unique characters
+│       ├── CheckPermutation.java         # 1.2 - String permutation
+│       ├── ParlindromePermutation.java   # 1.4 - Palindrome permutation
+│       ├── OneEditAway.java              # 1.5 - One edit away
+│       └── StringCompression.java        # 1.6 - String compression
+├── run.sh                                # Run script
 └── README.md
 ```
 
-## Organization
-
-Solutions are organized by data structure/algorithm type for easy navigation:
-- **Arrays**: Array manipulation, two pointers, sliding window
-- **Strings**: String processing, pattern matching
-- **Linked Lists**: Node manipulation, cycle detection
-- **Stacks & Queues**: LIFO/FIFO operations
-- **Trees**: Binary trees, BST operations, traversals
-- **Graphs**: BFS, DFS, shortest paths
-- **Dynamic Programming**: Memoization, tabulation
-- **Sorting**: Various sorting algorithms
-- **Searching**: Binary search, linear search
-
 ## Usage
 
-Each solution includes:
-- Problem statement reference
-- Time and space complexity analysis
-- Multiple approaches when applicable
-- Test cases
+### Run any solution:
+```bash
+./run.sh solutions/1-arrays_and_strings/IsUnique.java
+./run.sh solutions/1-arrays_and_strings/CheckPermutation.java
+./run.sh solutions/1-arrays_and_strings/StringCompression.java
+```
 
-## Getting Started
+### Available solutions:
+- **IsUnique** - Check if string has all unique characters
+- **CheckPermutation** - Determine if one string is permutation of another
+- **ParlindromePermutation** - Check if string is permutation of palindrome
+- **OneEditAway** - Check if strings are one edit away
+- **StringCompression** - Compress string using character counts
 
-1. Clone the repository
-2. Navigate to the specific problem directory
-3. Compile and run the Java files
-4. Review the solutions and test cases
+## Features
 
-## Notes
-
-- Solutions are implemented with clarity and efficiency in mind
-- Each file includes comprehensive comments
-- Test cases demonstrate various edge cases
-- Solutions follow Java best practices and naming conventions
+- **Consistent testing** with TestUtils utility
+- **Minimal documentation** for personal learning
+- **Comprehensive test cases** with pass/fail indicators
+- **Easy execution** with run script
