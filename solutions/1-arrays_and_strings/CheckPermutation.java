@@ -4,6 +4,8 @@ import java.util.Map;
  * Question 1.2:
  *  Given two strings, determine if one is a permutation of another.
  */
+import solutions.TestUtils;
+
 public class CheckPermutation {
 
     // Method: Count character frequencies in first string, then decrement for second string
@@ -29,30 +31,18 @@ public class CheckPermutation {
 
     public static void main(String[] args) {
         // Test cases for CheckPermutation problem
+        TestUtils.reset();
         
-        // Test 1: Valid permutation with duplicates
-        System.out.println("Test 1 - Valid with duplicates: " + isPermuation("aabcdee", "aeaebcd") + " (expected: true)");
+        TestUtils.testBoolean("Valid with duplicates", isPermuation("aabcdee", "aeaebcd"), true);
+        TestUtils.testBoolean("Different chars", isPermuation("aabcdee", "abcdefg"), false);
+        TestUtils.testBoolean("Same strings", isPermuation("hello", "hello"), true);
+        TestUtils.testBoolean("Different lengths", isPermuation("abc", "abcd"), false);
+        TestUtils.testBoolean("Empty strings", isPermuation("", ""), true);
+        TestUtils.testBoolean("Single char", isPermuation("a", "a"), true);
+        TestUtils.testBoolean("Case sensitivity", isPermuation("Hello", "hello"), false);
+        TestUtils.testBoolean("Simple valid", isPermuation("abc", "bca"), true);
         
-        // Test 2: Different characters
-        System.out.println("Test 2 - Different chars: " + isPermuation("aabcdee", "abcdefg") + " (expected: false)");
-        
-        // Test 3: Same strings
-        System.out.println("Test 3 - Same strings: " + isPermuation("hello", "hello") + " (expected: true)");
-        
-        // Test 4: Different lengths
-        System.out.println("Test 4 - Different lengths: " + isPermuation("abc", "abcd") + " (expected: false)");
-        
-        // Test 5: Empty strings
-        System.out.println("Test 5 - Empty strings: " + isPermuation("", "") + " (expected: true)");
-        
-        // Test 6: Single character
-        System.out.println("Test 6 - Single char: " + isPermuation("a", "a") + " (expected: true)");
-        
-        // Test 7: Case sensitivity
-        System.out.println("Test 7 - Case sensitivity: " + isPermuation("Hello", "hello") + " (expected: false)");
-        
-        // Test 8: Valid permutation simple
-        System.out.println("Test 8 - Simple valid: " + isPermuation("abc", "bca") + " (expected: true)");
+        TestUtils.printSummary();
     }
 
 }

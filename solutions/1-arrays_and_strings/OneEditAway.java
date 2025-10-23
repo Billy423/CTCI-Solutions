@@ -2,6 +2,8 @@
  * Question 1.5:
  *  Given two strings, check if they are one edit away (insert, delete, or replace one character).
  */
+import solutions.TestUtils;
+
 public class OneEditAway {
     
     // Method: Handle three cases - replace (same length), insert/delete (length diff = 1)
@@ -56,55 +58,27 @@ public class OneEditAway {
 
     public static void main(String[] args) {
         // Test cases for OneEditAway problem
+        TestUtils.reset();
         
-        // Test 1: Insert operation (pale -> ple)
-        System.out.println("Test 1 - Insert: " + isOneEditAway("pale", "ple")); // true
+        TestUtils.testBoolean("Insert", isOneEditAway("pale", "ple"), true);
+        TestUtils.testBoolean("Delete", isOneEditAway("pale", "pal"), true);
+        TestUtils.testBoolean("Replace", isOneEditAway("pale", "bale"), true);
+        TestUtils.testBoolean("Same strings", isOneEditAway("pale", "pale"), true);
+        TestUtils.testBoolean("Multiple edits", isOneEditAway("pale", "bake"), false);
+        TestUtils.testBoolean("Length diff > 1", isOneEditAway("pale", "pa"), false);
+        TestUtils.testBoolean("Empty to single", isOneEditAway("", "a"), true);
+        TestUtils.testBoolean("Single to empty", isOneEditAway("a", ""), true);
+        TestUtils.testBoolean("Single char", isOneEditAway("a", "b"), true);
+        TestUtils.testBoolean("Insert at start", isOneEditAway("ale", "pale"), true);
+        TestUtils.testBoolean("Insert at end", isOneEditAway("pal", "pale"), true);
+        TestUtils.testBoolean("Delete from start", isOneEditAway("pale", "ale"), true);
+        TestUtils.testBoolean("Delete from end", isOneEditAway("pale", "pal"), true);
+        TestUtils.testBoolean("Replace at start", isOneEditAway("pale", "sale"), true);
+        TestUtils.testBoolean("Replace at end", isOneEditAway("pale", "pals"), true);
+        TestUtils.testBoolean("Two different", isOneEditAway("abc", "def"), false);
+        TestUtils.testBoolean("Case sensitivity", isOneEditAway("Pale", "pale"), true);
         
-        // Test 2: Delete operation (pale -> pal)
-        System.out.println("Test 2 - Delete: " + isOneEditAway("pale", "pal")); // true
-        
-        // Test 3: Replace operation (pale -> bale)
-        System.out.println("Test 3 - Replace: " + isOneEditAway("pale", "bale")); // true
-        
-        // Test 4: Same strings
-        System.out.println("Test 4 - Same: " + isOneEditAway("pale", "pale")); // true
-        
-        // Test 5: More than one edit (pale -> bake)
-        System.out.println("Test 5 - Multiple edits: " + isOneEditAway("pale", "bake")); // false
-        
-        // Test 6: Length difference > 1
-        System.out.println("Test 6 - Length diff > 1: " + isOneEditAway("pale", "pa")); // false
-        
-        // Test 7: Empty string cases
-        System.out.println("Test 7 - Empty to single: " + isOneEditAway("", "a")); // true
-        System.out.println("Test 8 - Single to empty: " + isOneEditAway("a", "")); // true
-        
-        // Test 9: Edge case - single character
-        System.out.println("Test 9 - Single char: " + isOneEditAway("a", "b")); // true
-        
-        // Test 10: Insert at beginning
-        System.out.println("Test 10 - Insert at start: " + isOneEditAway("ale", "pale")); // true
-        
-        // Test 11: Insert at end
-        System.out.println("Test 11 - Insert at end: " + isOneEditAway("pal", "pale")); // true
-        
-        // Test 12: Delete from beginning
-        System.out.println("Test 12 - Delete from start: " + isOneEditAway("pale", "ale")); // true
-        
-        // Test 13: Delete from end
-        System.out.println("Test 13 - Delete from end: " + isOneEditAway("pale", "pal")); // true
-        
-        // Test 14: Replace at beginning
-        System.out.println("Test 14 - Replace at start: " + isOneEditAway("pale", "sale")); // true
-        
-        // Test 15: Replace at end
-        System.out.println("Test 15 - Replace at end: " + isOneEditAway("pale", "pals")); // true
-        
-        // Test 16: Two different characters
-        System.out.println("Test 16 - Two different: " + isOneEditAway("abc", "def")); // false
-        
-        // Test 17: Case sensitivity
-        System.out.println("Test 17 - Case sensitivity: " + isOneEditAway("Pale", "pale")); // true
+        TestUtils.printSummary();
     }
     
 }

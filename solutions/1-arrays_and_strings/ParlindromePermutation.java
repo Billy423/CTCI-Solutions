@@ -2,6 +2,8 @@
  * Question 1.4:
  *  Given a string, check if it is a permutation of a palindrome.
  */
+import solutions.TestUtils;
+
 public class ParlindromePermutation {
 
     // Method: Count character frequencies, palindrome can have at most one odd frequency
@@ -29,30 +31,18 @@ public class ParlindromePermutation {
 
     public static void main(String[] args) {
         // Test cases for PalindromePermutation problem
+        TestUtils.reset();
         
-        // Test 1: Valid palindrome permutation
-        System.out.println("Test 1 - Valid permutation: " + isParlindromPermutation("ca re rac") + " (expected: true)");
+        TestUtils.testBoolean("Valid permutation", isParlindromPermutation("ca re rac"), true);
+        TestUtils.testBoolean("Not valid", isParlindromPermutation("hello"), false);
+        TestUtils.testBoolean("Empty string", isParlindromPermutation(""), true);
+        TestUtils.testBoolean("Single char", isParlindromPermutation("a"), true);
+        TestUtils.testBoolean("All same", isParlindromPermutation("aaaa"), true);
+        TestUtils.testBoolean("Case sensitivity", isParlindromPermutation("Aa"), true);
+        TestUtils.testBoolean("With spaces", isParlindromPermutation("taco cat"), true);
+        TestUtils.testBoolean("One odd frequency", isParlindromPermutation("aabbccd"), true);
         
-        // Test 2: Not a palindrome permutation
-        System.out.println("Test 2 - Not valid: " + isParlindromPermutation("hello") + " (expected: false)");
-        
-        // Test 3: Empty string
-        System.out.println("Test 3 - Empty string: " + isParlindromPermutation("") + " (expected: true)");
-        
-        // Test 4: Single character
-        System.out.println("Test 4 - Single char: " + isParlindromPermutation("a") + " (expected: true)");
-        
-        // Test 5: All same characters
-        System.out.println("Test 5 - All same: " + isParlindromPermutation("aaaa") + " (expected: true)");
-        
-        // Test 6: Case sensitivity
-        System.out.println("Test 6 - Case sensitivity: " + isParlindromPermutation("Aa") + " (expected: true)");
-        
-        // Test 7: With spaces
-        System.out.println("Test 7 - With spaces: " + isParlindromPermutation("taco cat") + " (expected: true)");
-        
-        // Test 8: One odd frequency (valid palindrome)
-        System.out.println("Test 8 - One odd frequency: " + isParlindromPermutation("aabbccd") + " (expected: true)");
+        TestUtils.printSummary();
     }
 
 }

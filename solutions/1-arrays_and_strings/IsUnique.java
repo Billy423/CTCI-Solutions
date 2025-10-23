@@ -1,3 +1,4 @@
+import solutions.TestUtils;
 import java.util.Arrays;
 
 /*
@@ -38,29 +39,17 @@ public class IsUnique {
 
     public static void main(String[] args) {
         // Test cases for IsUnique problem
+        TestUtils.reset();
         
-        // Test 1: All unique characters
-        System.out.println("Test 1 - All unique: " + isUnique("abcdefg") + " (expected: true)");
+        TestUtils.testBoolean("All unique", isUnique("abcdefg"), true);
+        TestUtils.testBoolean("Has duplicates", isUnique("hellothere"), false);
+        TestUtils.testBoolean("Empty string", isUnique(""), true);
+        TestUtils.testBoolean("Single char", isUnique("a"), true);
+        TestUtils.testBoolean("All same", isUnique("aaaa"), false);
+        TestUtils.testBoolean("Case sensitivity", isUnique("Hello"), true);
+        TestUtils.testBoolean("With numbers", isUnique("abc123"), true);
+        TestUtils.testBoolean("Duplicates at end", isUnique("abcdefgg"), false);
         
-        // Test 2: Has duplicates
-        System.out.println("Test 2 - Has duplicates: " + isUnique("hellothere") + " (expected: false)");
-        
-        // Test 3: Empty string
-        System.out.println("Test 3 - Empty string: " + isUnique("") + " (expected: true)");
-        
-        // Test 4: Single character
-        System.out.println("Test 4 - Single char: " + isUnique("a") + " (expected: true)");
-        
-        // Test 5: All same characters
-        System.out.println("Test 5 - All same: " + isUnique("aaaa") + " (expected: false)");
-        
-        // Test 6: Case sensitivity
-        System.out.println("Test 6 - Case sensitivity: " + isUnique("Hello") + " (expected: true)");
-        
-        // Test 7: Non-alphabetic characters
-        System.out.println("Test 7 - With numbers: " + isUnique("abc123") + " (expected: true)");
-        
-        // Test 8: Duplicates at end
-        System.out.println("Test 8 - Duplicates at end: " + isUnique("abcdefgg") + " (expected: false)");
+        TestUtils.printSummary();
     }
 }
