@@ -79,4 +79,77 @@ public class TestUtils {
                           " (expected: " + expected + ")" + 
                           (passed ? " Passed!" : " Failed") + " - " + message);
     }
+    
+    // Matrix utilities
+    public static void testMatrix(String testName, int[][] actual, int[][] expected) {
+        testCount++;
+        boolean passed = matricesEqual(actual, expected);
+        if (passed) passedCount++;
+        
+        System.out.println("Test " + testCount + " - " + testName + ": " + 
+                          (passed ? "Passed!" : "Failed"));
+        if (!passed) {
+            System.out.println("Expected:");
+            printMatrix(expected);
+            System.out.println("Actual:");
+            printMatrix(actual);
+        }
+    }
+    
+    // Check if two matrices are equal
+    public static boolean matricesEqual(int[][] matrix1, int[][] matrix2) {
+        if (matrix1 == null && matrix2 == null) return true;
+        if (matrix1 == null || matrix2 == null) return false;
+        if (matrix1.length != matrix2.length) return false;
+        
+        for (int i = 0; i < matrix1.length; i++) {
+            if (matrix1[i] == null && matrix2[i] == null) continue;
+            if (matrix1[i] == null || matrix2[i] == null) return false;
+            if (matrix1[i].length != matrix2[i].length) return false;
+            
+            for (int j = 0; j < matrix1[i].length; j++) {
+                if (matrix1[i][j] != matrix2[i][j]) return false;
+            }
+        }
+        return true;
+    }
+    
+    // Print matrix for debugging
+    public static void printMatrix(int[][] matrix) {
+        if (matrix == null) {
+            System.out.println("null");
+            return;
+        }
+        
+        for (int i = 0; i < matrix.length; i++) {
+            if (matrix[i] == null) {
+                System.out.println("null row");
+                continue;
+            }
+            System.out.print("[");
+            for (int j = 0; j < matrix[i].length; j++) {
+                System.out.print(matrix[i][j]);
+                if (j < matrix[i].length - 1) System.out.print(", ");
+            }
+            System.out.println("]");
+        }
+    }
+    
+    // Create a copy of matrix (useful for testing in-place modifications)
+    public static int[][] copyMatrix(int[][] matrix) {
+        if (matrix == null) return null;
+        
+        int[][] copy = new int[matrix.length][];
+        for (int i = 0; i < matrix.length; i++) {
+            if (matrix[i] == null) {
+                copy[i] = null;
+            } else {
+                copy[i] = new int[matrix[i].length];
+                for (int j = 0; j < matrix[i].length; j++) {
+                    copy[i][j] = matrix[i][j];
+                }
+            }
+        }
+        return copy;
+    }
 }
